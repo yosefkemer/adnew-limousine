@@ -67,25 +67,25 @@
         </section>
         <section id="reservation" class="reservation">
             <h2>Online Reservation</h2>
-            <form class="reservation-form">
+            <form class="reservation-form" action="https://formspree.io/f/mrbkrweg" method="POST">
                 <div class="form-row">
                     <div class="input-group">
                         <label for="res-name"><span>👤</span> Full Name</label>
-                        <input id="res-name" type="text" placeholder="Enter your name" required>
+                        <input id="res-name" name="Full Name" type="text" placeholder="Enter your name" required>
                     </div>
                     <div class="input-group">
                         <label for="res-email"><span>✉️</span> Email</label>
-                        <input id="res-email" type="email" placeholder="Enter your email" required>
+                        <input id="res-email" name="Email" type="email" placeholder="Enter your email" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="input-group">
                         <label for="res-phone"><span>📞</span> Phone</label>
-                        <input id="res-phone" type="tel" placeholder="e.g. (555) 123-4567" required>
+                        <input id="res-phone" name="Phone" type="tel" placeholder="e.g. (555) 123-4567" required>
                     </div>
                     <div class="input-group">
                         <label for="res-car"><span>🚗</span> Car Type</label>
-                        <select id="res-car" required>
+                        <select id="res-car" name="Car Type" required>
                             <option value="" disabled selected>Select car type</option>
                             <option value="sedan">Sedan</option>
                             <option value="suv">SUV</option>
@@ -97,24 +97,24 @@
                 <div class="form-row">
                     <div class="input-group">
                         <label for="res-pickup"><span>📍</span> Pickup Location</label>
-                        <input id="res-pickup" type="text" placeholder="Pickup address" required>
+                        <input id="res-pickup" name="Pickup Location" type="text" placeholder="Pickup address" required>
                     </div>
                     <div class="input-group">
                         <label for="res-dropoff"><span>🏁</span> Drop-off Location</label>
-                        <input id="res-dropoff" type="text" placeholder="Drop-off address" required>
+                        <input id="res-dropoff" name="Drop-off Location" type="text" placeholder="Drop-off address" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="input-group">
                         <label for="res-date"><span>📅</span> Date</label>
-                        <input id="res-date" type="date" required>
+                        <input id="res-date" name="Date" type="date" required>
                     </div>
                     <div class="input-group">
                         <label for="res-time"><span>⏰</span> Time</label>
-                        <input id="res-time" type="time" required>
+                        <input id="res-time" name="Time" type="time" required>
                     </div>
                 </div>
-                <button type="submit">Reserve
+                <button type="submit">Reserve</button>
                 <div class="reservation-success" style="display:none;">Thank you! Your reservation has been received.</div>
             </form>
         </section>
