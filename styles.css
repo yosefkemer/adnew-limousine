@@ -5,6 +5,7 @@ body {
     background: #181818;
     color: #eaeaea;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 header {
     min-height: 70vh;
@@ -509,6 +510,142 @@ footer {
   margin-left: auto;
   margin-right: auto;
 }
+.pricing {
+  background: #232323;
+  padding: 5rem 2rem 4rem 2rem;
+  text-align: center;
+  border-radius: 40px;
+  margin: 3rem 2vw 0 2vw;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pricing h2 {
+  color: #ffd700;
+  font-size: 2.3rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.table-container {
+  max-width: 100%;
+  margin: 0 auto;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  border: 2px solid #e9ecef;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pricing-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  min-width: 700px;
+}
+
+.pricing-table thead th {
+  background: linear-gradient(90deg, #232526 0%, #414345 100%);
+  color: #fff;
+  padding: 25px 35px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1em;
+  border: none;
+  white-space: nowrap;
+  min-width: 120px;
+}
+
+.pricing-table thead th:first-child {
+  border-top-left-radius: 14px;
+  min-width: 180px;
+}
+
+.pricing-table thead th:last-child {
+  border-top-right-radius: 14px;
+}
+
+.pricing-table tbody td {
+  padding: 22px 35px;
+  text-align: center;
+  border-bottom: 1px solid #f1f3f4;
+  font-size: 1em;
+  white-space: nowrap;
+  min-width: 120px;
+}
+
+.pricing-table tbody tr:hover {
+  background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.pricing-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 14px;
+}
+
+.pricing-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 14px;
+}
+
+.vehicle-name {
+  font-weight: 600;
+  color: #232526;
+  text-align: center !important;
+  font-size: 1.1em;
+  min-width: 180px;
+}
+
+.price {
+  font-weight: 700;
+  color: #2c5aa0;
+  font-size: 1.1em;
+}
+
+.special-row {
+  background: linear-gradient(90deg, #232526 0%, #414345 100%);
+  color: #fff;
+}
+
+.special-row:hover {
+  background: linear-gradient(90deg, #2a2d2f 0%, #4a4d4f 100%) !important;
+}
+
+.special-row .vehicle-name {
+  color: #fff;
+}
+
+.call-pricing {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.call-link {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.call-link:hover {
+  color: #ffed4e;
+  text-decoration: underline;
+}
+
+.pricing-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+}
+
 @media (max-width: 900px) {
     .service-list {
         flex-direction: column;
@@ -521,7 +658,7 @@ footer {
     .hero h1 {
         font-size: 2.2rem;
     }
-    .services, .about, .contact {
+    .services, .about, .contact, .pricing {
         margin: 2rem 1vw 0 1vw;
         border-radius: 18px;
     }
@@ -529,6 +666,45 @@ footer {
         width: 95vw;
         padding: 1rem 0.5rem;
     }
+    
+    /* Pricing table responsive styles */
+    .pricing {
+        padding: 3rem 1rem 2rem 1rem;
+        margin: 2rem 1vw 0 1vw;
+        border-radius: 18px;
+    }
+    
+    .table-container {
+        width: 98%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .pricing-table thead th {
+        padding: 18px 20px;
+        font-size: 0.95em;
+        min-width: 100px;
+    }
+    
+    .pricing-table thead th:first-child {
+        min-width: 140px;
+    }
+    
+    .pricing-table tbody td {
+        padding: 16px 20px;
+        font-size: 0.9em;
+        min-width: 100px;
+    }
+    
+    .vehicle-name {
+        min-width: 140px;
+        font-size: 1em;
+    }
+    
+    .price {
+        font-size: 1em;
+    }
+    
     .service img {
         height: 160px;
     }
@@ -547,7 +723,7 @@ footer {
         padding: 4rem 1rem 2rem 1rem;
         border-radius: 0;
     }
-    .services, .about, .contact {
+    .services, .about, .contact, .pricing {
         padding: 2rem 1rem 1.5rem 1rem;
         margin: 1rem 0 0 0;
         border-radius: 10px;
@@ -561,5 +737,66 @@ footer {
     }
     .contact-label {
         min-width: 70px;
+    }
+    
+    /* Enhanced mobile pricing table styles */
+    .pricing {
+        padding: 2rem 1rem 1.5rem 1rem;
+        margin: 1rem 0 0 0;
+        border-radius: 10px;
+    }
+    
+    .pricing h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    
+    .table-container {
+        width: 100%;
+        margin: 0;
+        border-radius: 12px;
+    }
+    
+    .pricing-table thead th {
+        padding: 12px 8px;
+        font-size: 0.8em;
+        min-width: 70px;
+    }
+    
+    .pricing-table thead th:first-child {
+        min-width: 100px;
+    }
+    
+    .pricing-table tbody td {
+        padding: 12px 8px;
+        font-size: 0.8em;
+        min-width: 70px;
+    }
+    
+    .vehicle-name {
+        min-width: 100px;
+        font-size: 0.9em;
+    }
+    
+    .price {
+        font-size: 0.9em;
+    }
+    
+    .call-pricing {
+        font-size: 0.9em;
+    }
+}
+
+/* Additional very small screen support */
+@media (max-width: 480px) {
+    .pricing-table thead th,
+    .pricing-table tbody td {
+        padding: 10px 6px;
+        font-size: 0.75em;
+    }
+    
+    .pricing-table thead th:first-child,
+    .vehicle-name {
+        min-width: 90px;
     }
 }
