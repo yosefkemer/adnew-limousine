@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adnew Limousine Service</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,42 +15,91 @@
                 <span>Adnew Limousine</span>
             </div>
             <ul>
-                <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <section class="hero" style="background: linear-gradient(rgba(20,20,20,0.7),rgba(20,20,20,0.7)), url('images/limousine11.jpg') center/cover no-repeat; color: #fff;">
-            <h1>Adnew Limousine Service</h1>
-            <p>Arrive in style and comfort in Houston, TX. Professional chauffeurs. Premium vehicles.</p>
-            <a href="#contact" class="cta-btn">Book Now</a>
-        </section>
-    </header>
-    <main>
-        <section id="services" class="services">
-            <h2>Our Services</h2>
-            <div class="service-list">
-                <div class="service">
-                    <img src="images/limousine11.jpg" alt="Airport Transfer">
-                    <h3>Airport Transfers</h3>
-                    <p>Reliable and punctual airport transportation for individuals and groups.</p>
-                    <a href="#reservation" class="service-btn">Book Now</a>
+        <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="4000">
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
+            
+            <!-- Carousel Inner -->
+            <div class="carousel-inner">
+                <!-- Main Hero Slide -->
+                <div class="carousel-item active">
+                    <div class="hero-slide" style="background: linear-gradient(rgba(20,20,20,0.7),rgba(20,20,20,0.7)), url('images/limousine11.jpg') center/cover no-repeat;">
+                        <div class="hero-content">
+                            <h1>Adnew Limousine Service</h1>
+                            <p>Arrive in style and comfort in Houston, TX. Professional chauffeurs. Premium vehicles.</p>
+                            <a href="#contact" class="cta-btn">Book Now</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="service">
-                    <img src="images/limousine12.jpg" alt="Corporate Service">
-                    <h3>Corporate Service</h3>
-                    <p>Professional chauffeured service for business meetings and events.</p>
-                    <a href="#reservation" class="service-btn">Book Now</a>
+                
+                <!-- Airport Transfers Slide -->
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background: linear-gradient(rgba(20,20,20,0.7),rgba(20,20,20,0.7)), url('images/limousine11.jpg') center/cover no-repeat;">
+                        <div class="hero-content">
+                            <h1>Airport Transfers</h1>
+                            <p>Reliable and punctual airport transportation for individuals and groups.</p>
+                            <a href="#reservation" class="cta-btn">Book Now</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="service">
-                    <img src="images/limousine13.jpg" alt="Special Occasions">
-                    <h3>Special Occasions</h3>
-                    <p>Make your wedding, prom, or party unforgettable with our luxury limos.</p>
-                    <a href="#reservation" class="service-btn">Book Now</a>
+                
+                <!-- Corporate Service Slide -->
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background: linear-gradient(rgba(20,20,20,0.7),rgba(20,20,20,0.7)), url('images/limousine12.jpg') center/cover no-repeat;">
+                        <div class="hero-content">
+                            <h1>Corporate Service</h1>
+                            <p>Professional chauffeured service for business meetings and events.</p>
+                            <a href="#reservation" class="cta-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Special Occasions Slide -->
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background: linear-gradient(rgba(20,20,20,0.7),rgba(20,20,20,0.7)), url('images/limousine13.jpg') center/cover no-repeat;">
+                        <div class="hero-content">
+                            <h1>Special Occasions</h1>
+                            <p>Make your wedding, prom, or party unforgettable with our luxury limos.</p>
+                            <a href="#reservation" class="cta-btn">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mercedes Limousine Slide -->
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background: linear-gradient(rgba(20,20,20,0.7),rgba(20,20,20,0.7)), url('images/Mercedes_limo.jpeg') center/cover no-repeat;">
+                        <div class="hero-content">
+                            <h1>Luxury Mercedes Fleet</h1>
+                            <p>Experience the ultimate in comfort and style with our premium Mercedes limousines.</p>
+                            <a href="#reservation" class="cta-btn">Book Now</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+            
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </header>
+    <main>
         <section id="about" class="about">
             <h2>About Us</h2>
             <div class="about-content">
@@ -188,5 +238,6 @@
     <footer>
         <p>&copy; 2025 Adnew Limousine. All rights reserved.</p>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

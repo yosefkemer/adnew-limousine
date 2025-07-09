@@ -79,29 +79,6 @@ nav a:hover {
 nav a:hover::after {
     width: 100%;
 }
-.hero {
-    text-align: center;
-    padding: 8rem 2rem 6rem 2rem;
-    background: linear-gradient(rgba(24,24,24,0.7),rgba(24,24,24,0.7)), url('images/limousine11.jpg') center/cover no-repeat;
-    color: #fff;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-}
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1.2rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    text-shadow: 0 4px 16px rgba(0,0,0,0.3);
-}
-.hero p {
-    font-size: 1.5rem;
-    margin-bottom: 2.5rem;
-    color: #ffd700;
-    font-weight: 500;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
 .cta-btn {
     background: linear-gradient(90deg, #ffd700 60%, #fffbe6 100%);
     color: #181818;
@@ -116,86 +93,6 @@ nav a:hover::after {
     cursor: pointer;
 }
 .cta-btn:hover {
-    background: #fffbe6;
-    color: #181818;
-    transform: translateY(-2px) scale(1.04);
-}
-.services {
-    background: #232323;
-    padding: 5rem 2rem 4rem 2rem;
-    text-align: center;
-    border-radius: 40px;
-    margin: 3rem 2vw 0 2vw;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-}
-.services h2 {
-    color: #ffd700;
-    font-size: 2.3rem;
-    font-weight: 800;
-    margin-bottom: 2.5rem;
-}
-.service-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2.5rem;
-    margin-top: 2rem;
-    align-items: stretch;
-}
-.service {
-    background: #181818;
-    border-radius: 18px;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.13);
-    padding: 2rem 1.5rem 1.5rem 1.5rem;
-    width: 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    transition: transform 0.2s, box-shadow 0.2s;
-    border: 1.5px solid #232323;
-    position: relative;
-}
-.service:hover {
-    transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.22);
-    border-color: #ffd700;
-}
-.service img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 1.2rem;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-}
-.service h3 {
-    color: #ffd700;
-    font-size: 1.3rem;
-    margin-bottom: 0.7rem;
-    font-weight: 700;
-    text-align: center;
-}
-.service p {
-    color: #eaeaea;
-    font-size: 1.05rem;
-    margin-bottom: 1.2rem;
-    text-align: center;
-}
-.service .service-btn {
-    margin-top: auto;
-    background: #ffd700;
-    color: #181818;
-    border: none;
-    border-radius: 20px;
-    padding: 0.6rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s, transform 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-}
-.service .service-btn:hover {
     background: #fffbe6;
     color: #181818;
     transform: translateY(-2px) scale(1.04);
@@ -646,25 +543,249 @@ footer {
   position: relative;
 }
 
-@media (max-width: 900px) {
-    .service-list {
-        flex-direction: column;
-        align-items: center;
+/* Hero Carousel Styles */
+.hero-carousel {
+    min-height: 70vh;
+    position: relative;
+}
+
+.hero-slide {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 6rem 2rem;
+    color: #fff;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
+.hero-content {
+    max-width: 800px;
+    z-index: 2;
+    position: relative;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    color: #ffd700;
+    font-weight: 500;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    bottom: 20px;
+    margin-bottom: 0;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #ffd700;
+    background-color: transparent;
+    opacity: 0.7;
+    margin: 0 6px;
+}
+
+.carousel-indicators .active {
+    background-color: #ffd700;
+    opacity: 1;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    opacity: 0.8;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-size: 20px 20px;
+    border-radius: 50%;
+    background-color: rgba(255, 215, 0, 0.3);
+    padding: 20px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+/* Mobile responsive for carousel */
+@media (max-width: 768px) {
+    .hero-carousel {
+        min-height: 60vh;
     }
+    
+    .hero-slide {
+        min-height: 60vh;
+        padding: 3rem 1rem 2rem 1rem;
+        border-radius: 0;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        line-height: 1.4;
+    }
+    
+    .cta-btn {
+        font-size: 1rem;
+        padding: 0.8rem 2rem;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 10%;
+    }
+    
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-size: 16px 16px;
+        padding: 15px;
+    }
+    
+    .carousel-indicators {
+        bottom: 15px;
+    }
+    
+    .carousel-indicators [data-bs-target] {
+        width: 10px;
+        height: 10px;
+        margin: 0 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-carousel {
+        min-height: 50vh;
+    }
+    
+    .hero-slide {
+        min-height: 50vh;
+        padding: 2rem 0.5rem 1.5rem 0.5rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-btn {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.5rem;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 12%;
+    }
+    
+    .carousel-indicators [data-bs-target] {
+        width: 8px;
+        height: 8px;
+        margin: 0 3px;
+    }
+}
+
+/* Additional mobile improvements */
+@media (max-width: 480px) {
     nav {
+        padding: 0.8rem 1rem;
+    }
+    
+    nav ul {
+        gap: 1rem;
+    }
+    
+    .logo {
+        font-size: 1.4rem;
+    }
+    
+    .logo-img {
+        height: 32px;
+        width: 32px;
+    }
+    
+    /* Ensure touch targets are large enough */
+    nav a {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .cta-btn {
+        min-width: 140px;
+        text-align: center;
+    }
+    
+    /* Improve form inputs on mobile */
+    .reservation-form {
+        padding: 2rem 1rem;
+    }
+    
+    .form-row {
         flex-direction: column;
         gap: 1rem;
     }
-    .hero h1 {
-        font-size: 2.2rem;
+    
+    .input-group input,
+    .input-group select {
+        font-size: 16px; /* Prevents zoom on iOS */
     }
-    .services, .about, .contact, .pricing {
+}
+
+@media (max-width: 900px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem 2vw;
+    }
+    
+    nav ul {
+        gap: 1.5rem;
+    }
+    
+    nav a {
+        font-size: 1rem;
+    }
+    
+    .logo {
+        font-size: 1.8rem;
+    }
+    
+    .about, .contact, .pricing {
         margin: 2rem 1vw 0 1vw;
         border-radius: 18px;
-    }
-    .service {
-        width: 95vw;
-        padding: 1rem 0.5rem;
     }
     
     /* Pricing table responsive styles */
@@ -704,10 +825,6 @@ footer {
     .price {
         font-size: 1em;
     }
-    
-    .service img {
-        height: 160px;
-    }
 }
 @media (max-width: 700px) {
     .logo-img {
@@ -718,19 +835,29 @@ footer {
 @media (max-width: 600px) {
     nav {
         padding: 1rem 2vw;
+        flex-direction: column;
+        gap: 0.8rem;
     }
-    .hero {
-        padding: 4rem 1rem 2rem 1rem;
-        border-radius: 0;
+    
+    nav ul {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        justify-content: center;
     }
-    .services, .about, .contact, .pricing {
+    
+    nav a {
+        font-size: 0.95rem;
+    }
+    
+    .logo {
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+    }
+    
+    .about, .contact, .pricing {
         padding: 2rem 1rem 1.5rem 1rem;
         margin: 1rem 0 0 0;
         border-radius: 10px;
-    }
-    .service {
-        width: 95vw;
-        padding: 1rem 0.5rem;
     }
     .contact-details {
         padding: 1rem 0.5rem;
