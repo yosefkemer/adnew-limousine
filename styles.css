@@ -446,13 +446,13 @@ footer {
   border-spacing: 0;
   font-family: 'Montserrat', sans-serif;
   margin: 0;
-  min-width: 700px;
+  min-width: 800px;
 }
 
 .pricing-table thead th {
   background: linear-gradient(90deg, #232526 0%, #414345 100%);
   color: #fff;
-  padding: 25px 35px;
+  padding: 25px 15px;
   text-align: center;
   font-weight: 600;
   font-size: 1.1em;
@@ -468,15 +468,23 @@ footer {
 
 .pricing-table thead th:last-child {
   border-top-right-radius: 14px;
+  min-width: 150px;
+  padding: 25px 15px;
 }
 
 .pricing-table tbody td {
-  padding: 22px 35px;
+  padding: 22px 15px;
   text-align: center;
   border-bottom: 1px solid #f1f3f4;
   font-size: 1em;
   white-space: nowrap;
   min-width: 120px;
+  color: #232526;
+}
+
+.pricing-table tbody td:last-child {
+  min-width: 150px;
+  padding: 22px 15px;
 }
 
 .pricing-table tbody tr:hover {
@@ -552,10 +560,10 @@ footer {
 .hero-slide {
     min-height: 70vh;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     text-align: center;
-    padding: 8rem 2rem 6rem 2rem;
+    padding: 2rem 2rem 8rem 2rem;
     color: #fff;
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
@@ -566,6 +574,7 @@ footer {
     max-width: 800px;
     z-index: 2;
     position: relative;
+    margin-bottom: 2rem;
 }
 
 .hero-content h1 {
@@ -594,35 +603,36 @@ footer {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    border: 2px solid #ffd700;
-    background-color: transparent;
-    opacity: 0.7;
     margin: 0 6px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    opacity: 0.7;
 }
 
 .carousel-indicators .active {
     background-color: #ffd700;
+    border-color: #ffd700;
+    transform: scale(1.2);
     opacity: 1;
 }
 
-/* Carousel Controls */
+/* Hide carousel controls (arrows) completely */
 .carousel-control-prev,
-.carousel-control-next {
-    width: 5%;
-    opacity: 0.8;
+.carousel-control-next,
+.hero-carousel .carousel-control-prev,
+.hero-carousel .carousel-control-next {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-size: 20px 20px;
-    border-radius: 50%;
-    background-color: rgba(255, 215, 0, 0.3);
-    padding: 20px;
-}
-
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
-    opacity: 1;
+/* Ensure no hover states show arrows */
+.hero-carousel:hover .carousel-control-prev,
+.hero-carousel:hover .carousel-control-next {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
 }
 
 /* Mobile responsive for carousel */
@@ -633,8 +643,9 @@ footer {
     
     .hero-slide {
         min-height: 60vh;
-        padding: 3rem 1rem 2rem 1rem;
+        padding: 1rem 1rem 6rem 1rem;
         border-radius: 0;
+        align-items: flex-end;
     }
     
     .hero-content {
@@ -659,17 +670,6 @@ footer {
         padding: 0.8rem 2rem;
     }
     
-    .carousel-control-prev,
-    .carousel-control-next {
-        width: 10%;
-    }
-    
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        background-size: 16px 16px;
-        padding: 15px;
-    }
-    
     .carousel-indicators {
         bottom: 15px;
     }
@@ -688,7 +688,8 @@ footer {
     
     .hero-slide {
         min-height: 50vh;
-        padding: 2rem 0.5rem 1.5rem 0.5rem;
+        padding: 0.5rem 0.5rem 4rem 0.5rem;
+        align-items: flex-end;
     }
     
     .hero-content h1 {
@@ -704,11 +705,6 @@ footer {
     .cta-btn {
         font-size: 0.9rem;
         padding: 0.7rem 1.5rem;
-    }
-    
-    .carousel-control-prev,
-    .carousel-control-next {
-        width: 12%;
     }
     
     .carousel-indicators [data-bs-target] {
@@ -802,9 +798,9 @@ footer {
     }
     
     .pricing-table thead th {
-        padding: 18px 20px;
+        padding: 18px 12px;
         font-size: 0.95em;
-        min-width: 100px;
+        min-width: 110px;
     }
     
     .pricing-table thead th:first-child {
@@ -812,9 +808,10 @@ footer {
     }
     
     .pricing-table tbody td {
-        padding: 16px 20px;
+        padding: 16px 12px;
         font-size: 0.9em;
-        min-width: 100px;
+        min-width: 110px;
+        color: #232526;
     }
     
     .vehicle-name {
@@ -898,6 +895,7 @@ footer {
         padding: 12px 8px;
         font-size: 0.8em;
         min-width: 70px;
+        color: #232526;
     }
     
     .vehicle-name {
@@ -912,18 +910,48 @@ footer {
     .call-pricing {
         font-size: 0.9em;
     }
+    
+    .call-pricing-combined {
+        font-size: 0.9em;
+        padding: 16px 12px;
+        text-align: left;
+    }
 }
 
 /* Additional very small screen support */
 @media (max-width: 480px) {
     .pricing-table thead th,
     .pricing-table tbody td {
-        padding: 10px 6px;
-        font-size: 0.75em;
+        padding: 10px 8px;
+        font-size: 0.8em;
+    }
+    
+    .pricing-table tbody td {
+        color: #232526;
     }
     
     .pricing-table thead th:first-child,
     .vehicle-name {
-        min-width: 90px;
+        min-width: 100px;
     }
+    
+    .call-pricing-combined {
+        font-size: 0.8em;
+        padding: 12px 8px;
+        text-align: left;
+    }
+}
+
+.call-pricing-combined {
+  text-align: left;
+  font-weight: 600;
+  font-size: 1.05em;
+  color: #ffffff;
+  padding: 22px 15px;
+  background: linear-gradient(90deg, #e6e8ea 0%, #d4d6d8 100%);
+}
+
+.phone-highlight {
+  color: #0066cc;
+  font-weight: 700;
 }
