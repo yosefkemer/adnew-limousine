@@ -6,6 +6,8 @@
     <title>Adnew Limousine Service</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
     <header>
@@ -17,6 +19,7 @@
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#payment">Payment</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -204,6 +207,149 @@
                 <div class="reservation-success" style="display:none;">Thank you! Your reservation has been received.</div>
             </form>
         </section>
+        
+        <!-- Payment Processing Section -->
+        <section id="payment" class="payment-section">
+            <h2>Payment & Receipt System</h2>
+            <div class="payment-container">
+                
+                <!-- Trip Information Form -->
+                <div class="trip-info-card">
+                    <h3>Trip Information</h3>
+                    <form id="trip-form" class="trip-form">
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="customer-name">👤 Customer Name</label>
+                                <input id="customer-name" type="text" placeholder="Enter customer name" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="customer-email">✉️ Email</label>
+                                <input id="customer-email" type="email" placeholder="Enter email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="customer-phone">📞 Phone</label>
+                                <input id="customer-phone" type="tel" placeholder="Enter phone number" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="vehicle-type">🚗 Vehicle Type</label>
+                                <select id="vehicle-type" required>
+                                    <option value="" disabled selected>Select vehicle</option>
+                                    <option value="sedan">Sedan - $3.50/mile (Min: $25)</option>
+                                    <option value="suv">SUV - $4.50/mile (Min: $120)</option>
+                                    <option value="stretch">Stretch Limo - $8.00/mile (Min: $25)</option>
+                                    <option value="van">Van - $5.50/mile (Min: $25)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="pickup-location">📍 Pickup Location</label>
+                                <input id="pickup-location" type="text" placeholder="Enter pickup address" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="dropoff-location">🏁 Destination</label>
+                                <input id="dropoff-location" type="text" placeholder="Enter destination" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="trip-date">📅 Trip Date</label>
+                                <input id="trip-date" type="date" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="trip-time">⏰ Trip Time</label>
+                                <input id="trip-time" type="time" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label for="tip-amount">💰 Tip Amount (Optional)</label>
+                                <input id="tip-amount" type="number" step="0.01" min="0" placeholder="0.00">
+                            </div>
+                        </div>
+                        <button type="button" id="calculate-fare" class="calculate-btn">Calculate Fare</button>
+                    </form>
+                </div>
+
+                <!-- Fare Display -->
+                <div class="fare-display" id="fare-display" style="display: none;">
+                    <h3>Fare Breakdown</h3>
+                    <div class="fare-details">
+                        <div class="fare-row">
+                            <span>Base Fare:</span>
+                            <span id="base-fare">$0.00</span>
+                        </div>
+                        <div class="fare-row">
+                            <span>Service Fees:</span>
+                            <span id="service-fees">$0.00</span>
+                        </div>
+                        <div class="fare-row">
+                            <span>Tip:</span>
+                            <span id="tip-display">$0.00</span>
+                        </div>
+                        <div class="fare-row total">
+                            <span>Total:</span>
+                            <span id="total-fare">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Method Selection -->
+                <div class="payment-method-card" id="payment-methods" style="display: none;">
+                    <h3>Payment Method</h3>
+                    <div class="payment-buttons">
+                        <button type="button" id="cash-payment" class="payment-method-btn cash-btn">
+                            💵 Cash Payment
+                        </button>
+                        <button type="button" id="card-payment" class="payment-method-btn card-btn">
+                            💳 Credit Card
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card Payment Form -->
+                <div class="card-payment-form" id="card-form" style="display: none;">
+                    <h3>Credit Card Payment</h3>
+                    <div class="card-form-container">
+                        <div id="card-element" class="card-element">
+                            <!-- Stripe Elements will create form elements here -->
+                        </div>
+                        <div id="card-errors" class="card-errors" role="alert"></div>
+                        <button type="button" id="submit-payment" class="submit-payment-btn">
+                            Process Payment
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Receipt Display -->
+                <div class="receipt-container" id="receipt-container" style="display: none;">
+                    <h3>Receipt Generated</h3>
+                    <div class="receipt-actions">
+                        <button type="button" id="print-receipt" class="receipt-btn print-btn">
+                            🖨️ Print Receipt
+                        </button>
+                        <button type="button" id="email-receipt" class="receipt-btn email-btn">
+                            📧 Email Receipt
+                        </button>
+                        <button type="button" id="new-transaction" class="receipt-btn new-btn">
+                            ➕ New Transaction
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Loading Indicator -->
+                <div class="loading-indicator" id="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Processing payment...</p>
+                </div>
+
+                <!-- Messages -->
+                <div class="message-container" id="message-container"></div>
+            </div>
+        </section>
+        
         <section id="contact" class="contact">
             <h2>Contact Us</h2>
             <form>
@@ -218,5 +364,8 @@
         <p>&copy; 2025 Adnew Limousine. All rights reserved.</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="config.js"></script>
+    <script src="payment.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
