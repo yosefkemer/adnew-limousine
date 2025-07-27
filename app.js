@@ -102,31 +102,22 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Calculate fare (simplified calculation - in real app, use Google Maps API for distance)
+        // Calculate fare using user-entered miles, minimum rate, per mile rate, and tip
         const rates = {
-            'sedan': 3.50,
-            'suv': 4.50,
-            'stretch': 8.00,
-            'van': 5.50
+            'sedan': 2.75,
+            'suv': 2.75,
+            'Sprinter Van': 6.00
         };
-
-        // Minimum fares by vehicle type
         const minimumFares = {
-            'sedan': 25,
-            'suv': 120,
-            'stretch': 25,
-            'van': 25
+            'sedan': 85.00,
+            'suv': 85.00,
+            'Sprinter Van': 210.00
         };
-
-        const estimatedDistance = 10; // You would calculate this based on pickup/dropoff locations
+        const miles = parseFloat(formData.tripMiles) || 0;
         const baseRate = rates[formData.vehicleType] || rates.sedan;
-        let baseFare = estimatedDistance * baseRate;
-        
-        // Apply minimum fare based on vehicle type
         const minimumFare = minimumFares[formData.vehicleType] || minimumFares.sedan;
-        baseFare = Math.max(baseFare, minimumFare);
-
-        const serviceFees = 0; // Add any service fees here
+        const serviceFees = miles * baseRate;
+        const baseFare = minimumFare;
         const tip = parseFloat(formData.tipAmount) || 0;
         const total = baseFare + serviceFees + tip;
 
@@ -335,14 +326,15 @@ document.addEventListener('DOMContentLoaded', function() {
             dropoffLocation: document.getElementById('dropoff-location').value,
             tripDate: document.getElementById('trip-date').value,
             tripTime: document.getElementById('trip-time').value,
-            tipAmount: document.getElementById('tip-amount').value
+            tipAmount: document.getElementById('tip-amount').value,
+            tripMiles: document.getElementById('trip-miles').value
         };
     }
 
     // Validate trip form
     function validateTripForm(data) {
         const required = ['customerName', 'customerEmail', 'customerPhone', 'vehicleType', 
-                         'pickupLocation', 'dropoffLocation', 'tripDate', 'tripTime'];
+                         'pickupLocation', 'dropoffLocation', 'tripDate', 'tripTime', 'tripMiles'];
         
         for (let field of required) {
             if (!data[field]) {

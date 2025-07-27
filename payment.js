@@ -11,45 +11,36 @@ class PaymentProcessor {
         }
     }
 
-    // Calculate fare based on distance and vehicle type
-    calculateFare(pickupLocation, dropoffLocation, vehicleType, additionalServices = []) {
-        // Base rates per mile (you can adjust these)
+    // Calculate fare based on miles, minimum rate, per mile rate, and tip
+    calculateFare(vehicleType, miles, tip = 0, additionalServices = []) {
+        // Base rates per mile
         const rates = {
-            'sedan': 3.50,
-            'suv': 4.50,
-            'stretch': 8.00,
-            'van': 5.50
+            'sedan': 2.75,
+            'suv': 2.75,
+            'Sprinter Van': 6.00
         };
-
         // Minimum fares by vehicle type
         const minimumFares = {
-            'sedan': 25,
-            'suv': 120,
-            'stretch': 25,
-            'van': 25
+            'sedan': 85.00,
+            'suv': 85.00,
+            'Sprinter Van': 210.00
         };
-
-        // Estimated distance (in a real app, you'd use Google Maps API)
-        const estimatedDistance = 10; // placeholder
         const baseRate = rates[vehicleType] || rates.sedan;
-        let totalFare = estimatedDistance * baseRate;
-
-        // Add service fees
-        const serviceFees = additionalServices.reduce((total, service) => {
-            return total + (service.price || 0);
-        }, 0);
-
-        totalFare += serviceFees;
-
-        // Apply minimum fare based on vehicle type
         const minimumFare = minimumFares[vehicleType] || minimumFares.sedan;
-        totalFare = Math.max(totalFare, minimumFare);
-
+        miles = parseFloat(miles) || 0;
+        tip = parseFloat(tip) || 0;
+        let fareByMiles = miles * baseRate;
+        let serviceFees = fareByMiles;
+        let baseFare = minimumFare;
+        const totalFare = baseFare + serviceFees + tip;
         return {
-            baseFare: totalFare - serviceFees,
+            baseFare: baseFare,
             serviceFees: serviceFees,
+            tip: tip,
             total: totalFare,
-            estimatedDistance: estimatedDistance
+            miles: miles,
+            baseRate: baseRate,
+            minimumFare: minimumFare
         };
     }
 
